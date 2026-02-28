@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Masaged ❤️</title>
+
+<!-- الخط الجميل -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  background: #fff;
+  font-family:'Playfair Display', serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  text-align:center;
+  overflow:hidden;
+  transition:2s;
+  color:#333;
+}
+
+.container{
+  width:90%;
+  max-width:650px;
+}
+
+h1{
+  font-size:22px;
+  line-height:1.9;
+  min-height:160px;
+  text-shadow: 0 0 5px #ff6f91, 0 0 10px #ff6f91;
+}
+
+button{
+  padding:10px 20px;
+  margin:8px;
+  border:none;
+  border-radius:8px;
+  background: linear-gradient(to right, #ff6f91, #c2185b);
+  color:white;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{
+  transform:scale(1.1);
+  background: linear-gradient(to right, #ff9671, #ff6f91);
+}
+
+#flowers{
+  position:fixed;
+  bottom:-100%;
+  left:50%;
+  transform:translateX(-50%) scale(0.5);
+  width:70%;
+  max-width:450px;
+  transition:3s;
+}
+
+.heart{
+  position:fixed;
+  top:-20px;
+  font-size:22px;
+  color:red;
+  animation:fall linear infinite;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh);
+  }
+}
+
+/* أشكال خلفية ناعمة */
+.background-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 111, 145, 0.2);
+  animation: float 8s linear infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(100vh) translateX(0);}
+  100% { transform: translateY(-100vh) translateX(50px);}
+}
+
+.envelope {
+  background: #c2185b;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.4);
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  color: white;
+}
+
+.envelope:hover {
+  transform: scale(1.05) rotate(-2deg);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.5);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1 id="text"></h1>
+  <div id="buttons"></div>
+</div>
+
+<img id="flowers" src="flowers.png">
+<audio id="music" src="song.mp3" loop></audio>
+
+<script>
+
+const text = document.getElementById("text");
+const buttons = document.getElementById("buttons");
+const flowers = document.getElementById("flowers");
+const music = document.getElementById("music");
+
+function typeWriter(message, callback){
+  text.innerHTML="";
+  let i=0;
+  function typing(){
+    if(i<message.length){
+      text.innerHTML+=message.charAt(i);
+      i++;
+      setTimeout(typing,70);
+    } else if(callback){
+      setTimeout(callback,1500);
+    }
+  }
+  typing();
+}
+
+/* ===== START SCREEN ===== */
+buttons.innerHTML=`<button onclick="start()">Start ❤️</button>`;
+
+function start(){
+  music.play().catch(()=>{});
+  buttons.innerHTML="";
+  typeWriter("25 years ago, on March 1st, 2001... A girl was born who would quietly change the world around her.", scene2);
+}
+
+function scene2(){
+  typeWriter("Year after year, she entered people's lives... and somehow made them brighter.", scene3);
+}
+
+function scene3(){
+  typeWriter("And then one day... she entered mine.", question1);
+}
+
+/* ===== QUESTIONS ===== */
+
+function question1(){
+  typeWriter("Do you want me to make your birthday even more special?");
+  buttons.innerHTML=`
+  <button onclick="showMessage1()">Yes 💕</button>
+  <button onclick="showMessage1()">Of course ✨</button>
+  <button onclick="showMessage1()">Maybe 😌</button>
+  `;
+}
+
+function showMessage1(){
+  buttons.innerHTML="";
+  typeWriter("Nothing is better than you because you are my best friend in every sense. You are my bestie, and the fact is that I will never love anyone the way I love you. I will never feel the same connection with anyone but you. You are my girl, my purple, my safe place, and I'm so happy and grateful for every moment with you. The best part is that I feel the same for you every day.", question2);
+}
+
+function question2(){
+  buttons.innerHTML="";
+  typeWriter("Do you know how far I would go for you?");
+  buttons.innerHTML=`
+  <button onclick="question3()">Very far 🌍</button>
+  <button onclick="question3()">As far as needed 💫</button>
+  <button onclick="question3()">To the ends of the world 🌎</button>
+  `;
+}
+
+function question3(){
+  buttons.innerHTML="";
+  typeWriter("You said YES! 🎉 So here’s my promise to you:", showEnvelope1);
+}
+
+/* ===== ENVELOPES ===== */
+
+function showEnvelope1(){
+  buttons.innerHTML=`<button onclick="openPromise()">Open My Promise 💌</button>`;
+}
+
+function openPromise(){
+  buttons.innerHTML="";
+  typeWriter("My Promise:\n\nI will stand by you in everything, whether you are right or wrong. I am with you even if I lose everyone around me; at least I have you as the best and most genuine person.", showEnvelope2);
+}
+
+function showEnvelope2(){
+  buttons.innerHTML=`<button onclick="openVow()">Open My Vow 💜</button>`;
+}
+
+function openVow(){
+  buttons.innerHTML="";
+  typeWriter("My Vow:\n\nNo matter how far we drift, or how busy life gets — I’ll always find my way back to you. Because you’re not just a friend… you’re my person. ", showEnvelope3);
+}
+
+function showEnvelope3(){
+  buttons.innerHTML=`<button onclick="openTruth()">Open My Truth ❤️</button>`;
+}
+
+function openTruth(){
+  buttons.innerHTML="";
+  typeWriter("My Truth:\n\nI love you not in a romantic way but in the deepest, fiercest, most loyal way a heart can love another. And I’m proud of that.", finalScene);
+}
+
+/* ===== FINAL SCENE ===== */
+
+function finalScene(){
+  document.body.style.background="#fff";
+  typeWriter("Happy Birthday, Masaged 🌹", ()=>{
+    flowers.style.bottom="8%";
+    flowers.style.transform="translateX(-50%) scale(1.2)";
+    startHearts();
+    setTimeout(()=>{
+      text.innerHTML="Every year, you are the most beautiful gift to life. ❤️ Happy Birthday Masaged<br><br>";
+      buttons.innerHTML=`<button onclick="restart()">Restart 🔄</button>`;
+    },4000);
+  });
+}
+
+/* ===== HEARTS ===== */
+function startHearts(){
+  for(let i=0;i<60;i++){
+    let heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="❤";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(18+Math.random()*20)+"px"; // حجم متفاوت
+    heart.style.animationDuration=(4+Math.random()*4)+"s"; // سرعة متفاوتة
+    heart.style.color = ['#ff4b5c','#ff6f91','#ff9671'][Math.floor(Math.random()*3)]; // 
+   //الوان متوحدة  
+    document.body.appendChild(heart);
+  }
+}
+
+/* ===== RESTART ===== */
+function restart(){
+  location.reload();
+}
+</script>
+
+</body>
+</html>
